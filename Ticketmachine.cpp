@@ -11,14 +11,15 @@ string moneygiven;
 int main()
 {
     map<string, int> coin_values = {
-        {"20gr", 20},
-        {"50gr", 50},
-        {"1zl", 100},
-        {"2zl", 200},
-        {"5zl", 500},
-        {"10zl", 1000},
-        {"20zl", 2000},
         {"50zl", 5000},
+        {"20zl", 2000},
+        {"10zl", 1000},
+        {"5zl", 500 },
+        {"2zl", 200},
+        {"1zl", 100 },
+        {"50gr", 50},
+        {"20gr", 20},
+        {"10gr", 10}
     };
     int norm = 480;
     int redu = 320;
@@ -27,6 +28,7 @@ int main()
     int ticket_cost;
     double ticket_cost_zl;
     int remaining_cost;
+    int true_rest;
 
 
     cout << "Hello!" << endl;
@@ -95,6 +97,19 @@ int main()
                 remaining_cost -= coin_values[moneygiven];
                 cout << "Money left to pay:" << remaining_cost / 100.0 << "zl" << endl;
             } while (remaining_cost > 0);
+            if (remaining_cost < 0) 
+            {
+                true_rest = remaining_cost * (-1);
+                do
+                {
+                    for (auto coin : coin_values) {
+                        if (true_rest - coin.second >= 0) {
+                            cout << "your change:" << coin.first << endl;
+                            true_rest -= coin.second;
+                        }
+                    }
+                } while (true_rest > 0);
+            }
         }
     }
 }
