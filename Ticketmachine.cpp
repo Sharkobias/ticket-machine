@@ -29,7 +29,10 @@ int main()
         {16,  "insert coins or cash" },
         {17, "insert:"},
         {18,  "Money left to pay:" },
-        {19, "Your Change:"}
+        {19, "Your Change:"},
+        {20, "!Unrecognizable type of ticket!"},
+        {21, "try again"},
+        {22, "!Unsupported type of payment!"}
     };
 
     map<int, string> polish = {
@@ -51,7 +54,10 @@ int main()
         {16, "wloz monety"},
         {17, "wprowadz:"},
         {18, "Pozostalo do zaplaty:"},
-        {19, "reszta:"}
+        {19, "reszta:"},
+        {20, "!nieznany typ biletu!"},
+        {21, "sprobuj ponownie"},
+        {22, "!Nieobslugujemy tego typu platnosci!"}
     };
 
     map<int, string> lang;
@@ -89,6 +95,11 @@ int main()
     {
         lang = polish;
     }
+    else 
+    {
+        cout << "!unsupported language! deafulting to english" << endl;
+        lang = english;
+    }
     
     cout <<lang[1]<< endl;
     cout <<lang[2]<< endl<<lang[3]<<endl<<lang[4]<< endl;
@@ -101,6 +112,11 @@ int main()
     }
     else if (input == "3") {
         ticket_cost = timsdob;
+    }
+    else
+    {
+        cout << lang[20] << endl << lang[21] << endl;
+        return 0;
     }
     ticket_cost_zl = ticket_cost / 100.0;
     cout <<lang[5]<< endl;
@@ -124,7 +140,10 @@ int main()
         {
             cout <<lang[13]<< endl;
         }
-
+        else 
+        {
+            cout << lang[21] << endl;
+        }
     }
     else if (input == "2")
     {
@@ -144,7 +163,7 @@ int main()
         {
             cout <<lang[16]<< endl;
             cout <<lang[17]<< endl;
-            cout << "[20gr]" << endl << "[50gr]" << endl;
+            cout << "[10gr]" <<endl << "[20gr]" << endl << "[50gr]" << endl;
             cout << "[1zl]" << endl << "[2zl]" << endl << "[5zl]" << endl << "[10zl]" << endl << "[20zl]" << endl << "[50zl]" << endl;
             cin >> moneygiven;
             remaining_cost -= coin_values[moneygiven];
@@ -170,4 +189,11 @@ int main()
         cout << " " << endl;
         cout << lang[14] << endl;
     }
+    else 
+    {
+        cout << lang[22] << endl;
+        return 0;
+    }
+
+    return 0;
 }
