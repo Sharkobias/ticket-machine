@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <map>
 
 using namespace std;
 string input;
@@ -9,18 +10,20 @@ string moneygiven;
 
 int main()
 {
+    map<string, int> coin_values = {
+        {"20gr", 20},
+        {"50gr", 50},
+        {"1zl", 100},
+        {"2zl", 200},
+        {"5zl", 500},
+        {"10zl", 1000},
+        {"20zl", 2000},
+        {"50zl", 5000},
+    };
     int norm = 480;
     int redu = 320;
     int timshour = 650;
     int timsdob = 2250;
-    int twengr = 20;
-    int fifgr = 50;
-    int onezl = 100;
-    int twozl = 200;
-    int fivzl = 500;
-    int tenzl = 1000;
-    int twenzl = 2000;
-    int fiftzl = 5000;
     int ticket_cost;
     double ticket_cost_zl;
     int remaining_cost;
@@ -89,39 +92,7 @@ int main()
                 cout << "[20gr]" << endl << "[50gr]" << endl;
                 cout << "[1zl]" << endl << "[2zl]" << endl << "[5zl]" << endl << "[10zl]" << endl << "[20zl]" << endl << "[50zl]" << endl;
                 cin >> moneygiven;
-
-                if (moneygiven == "20gr")
-                {
-                    remaining_cost -= twengr;
-                }
-                else if (moneygiven == "50gr")
-                {
-                    remaining_cost -= fifgr;
-                }
-                else if (moneygiven == "1zl")
-                {
-                    remaining_cost -= onezl;
-                }
-                else if (moneygiven == "2zl")
-                {
-                    remaining_cost -= twozl;
-                }
-                else if (moneygiven == "5zl")
-                {
-                    remaining_cost -= fivzl;
-                }
-                else if (moneygiven == "10zl")
-                {
-                    remaining_cost -= tenzl;
-                }
-                else if (moneygiven == "20zl")
-                {
-                    remaining_cost -= twenzl;
-                }
-                else if (moneygiven == "50zl")
-                {
-                    remaining_cost -= fiftzl;
-                }
+                remaining_cost -= coin_values[moneygiven];
                 cout << "Money left to pay:" << remaining_cost / 100.0 << "zl" << endl;
             } while (remaining_cost > 0);
         }
