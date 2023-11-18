@@ -23,6 +23,7 @@ int main()
     int fiftzl = 5000;
     int ticket_cost;
     double ticket_cost_zl;
+    int remaining_cost;
 
 
     cout << "Hello!" << endl;
@@ -80,6 +81,7 @@ int main()
         else if (input == "3")
         {
             cout << "cost:"<<ticket_cost_zl<<endl;
+            remaining_cost = ticket_cost;
             do
             {
                 cout << "insert coins or cash" << endl;
@@ -90,54 +92,38 @@ int main()
 
                 if (moneygiven == "20gr")
                 {
-                    float diff = ticket_cost - twengr;
-                    cout << "Money left to pay:" << diff << "zl" << endl;
+                    remaining_cost -= twengr;
                 }
                 else if (moneygiven == "50gr")
                 {
-                    float diff = ticket_cost - fifgr;
-                    cout << "Money left to pay:" << diff << "zl" << endl;
+                    remaining_cost -= fifgr;
                 }
                 else if (moneygiven == "1zl")
                 {
-                    float diff = norm - onezl;
-                    cout << "Money left to pay:" << diff << "zl" << endl;
+                    remaining_cost -= onezl;
                 }
                 else if (moneygiven == "2zl")
                 {
-                    float diff = norm - twozl;
-                    cout << "Money left to pay:" << diff << "zl" << endl;
+                    remaining_cost -= twozl;
                 }
                 else if (moneygiven == "5zl")
                 {
-                    float diff = norm - fivzl;
-                    cout << "Your change:" << diff << "zl" << endl;
-                    cout << "20gr" << endl;
+                    remaining_cost -= fivzl;
                 }
                 else if (moneygiven == "10zl")
                 {
-                    float diff = norm - tenzl;
-                    cout << "Your change:" << diff << "zl" << endl;
-                    cout << "5zl" << endl;
-                    cout << "20gr" << endl;
+                    remaining_cost -= tenzl;
                 }
                 else if (moneygiven == "20zl")
                 {
-                    float diff = norm - twenzl;
-                    cout << "Your change:" << diff << "zl" << endl;
+                    remaining_cost -= twenzl;
                 }
                 else if (moneygiven == "50zl")
                 {
-                    float diff = norm - fiftzl;
-                    cout << "Your change:" << diff << "zl" << endl;
-                    cout << "2*20zl" << endl;
-                    cout << "5zl" << endl;
-                    cout << "20gr" << endl;
-                    cout << "Thanks for using our services!" << endl;
-                    abort();
+                    remaining_cost -= fiftzl;
                 }
-
-            } while (norm > 0);
+                cout << "Money left to pay:" << remaining_cost / 100.0 << "zl" << endl;
+            } while (remaining_cost > 0);
         }
     }
 }
